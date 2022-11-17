@@ -1,0 +1,29 @@
+<html>
+	<body>
+		<button class="enableEthereumButton">Enable Ethereum</button>
+		<h2>Address: <span class="showAccount"></span></h2>
+		<h2>Network ID: <span class="showNetwork"></span></h2>
+		<script>
+			const ethereumButton = document.querySelector('.enableEthereumButton');
+			const showAccount = document.querySelector('.showAccount');
+			const showNetwork = document.querySelector('.showNetwork');
+
+			ethereumButton.addEventListener('click', () => {
+			  getAccount();
+			});
+
+			async function getAccount() {
+			  const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+			  console.log(ethereum);
+			  console.log(accounts);
+			  const account = accounts[0];
+			  showAccount.innerHTML = account;
+			  showNetwork.innerHTML = ethereum.chainId;
+			}
+			
+			ethereum.on('chainChanged', (chainId) => {
+				 showNetwork.innerHTML = chainId;
+			});
+		</script>
+	</body>
+</html>
