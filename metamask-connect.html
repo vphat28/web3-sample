@@ -14,8 +14,6 @@
 
 			async function getAccount() {
 			  const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-			  console.log(ethereum);
-			  console.log(accounts);
 			  const account = accounts[0];
 			  showAccount.innerHTML = account;
 			  showNetwork.innerHTML = ethereum.chainId;
